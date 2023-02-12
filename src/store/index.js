@@ -46,24 +46,24 @@ export default createStore({
     // 공통으로 참조하기 위한 변수를 정의한 것
     // 프로젝트의 모든 곳에서 이를 참조하고 사용할 수 있음
     // 모든 컴포넌트 들에서 공통된 값을 사용할 수 있다.
-    // name: 'userName'
+    name: 'userName'
   },
   getters: {
     // Getters : 공통 속성, state 변수들을 get 호출
     // 각 컴포넌트의 계산된 속성(computed)의 공통 속성으로 정의
     // 여러 컴포넌트에서 동일한 computed가 사용될 경우 Getters에 정의해서 공통으로 사용
-    // getUserInfo(state) {
-    //   return '이름 : ' + state.name
-    // }
+    getUserInfo(state) {
+      return '이름 : ' + state.name
+    }
   },
   mutations: {
     // Mutations : 동기형 State 변경 처리기, 반드시 mutation 를 통해서만 state 를 변경해야 함
     // 변수들을 조작하는 함수
     // commit(함수명, 전달인자) 방식으로 호출
     // mutations 내에 함수 작성
-    // setUserInfo(state, name) {
-    //   state.name = name
-    // }
+    setUserInfo(state, name) {
+      state.name = name
+    }
   },
   actions: {
     // Actions : Mutation 트리거
@@ -72,5 +72,9 @@ export default createStore({
     // dispatch(함수명, 전달인자) 방식으로 호출
     // actions 내에 함수 작성
     // 비동기 기준이기 때문에 주로 콜백 함수로 작성
+  },
+  modules: {
+    // 모듈 사용을 위해 변수명 : 모듈명 형식으로 선언
+    memberStore: memberStore
   }
 })
